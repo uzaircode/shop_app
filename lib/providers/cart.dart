@@ -15,7 +15,6 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  //item is empty initially
   Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
@@ -27,10 +26,18 @@ class Cart with ChangeNotifier {
     return _items.length;
   }
 
+  //total amount logic
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.quantity;
+    });
+    return total;
+  }
+
   //add item logic
   void addItem(String productId, String title, double price) {
     if (_items.containsKey(productId)) {
-      //if item is exist, use update
       _items.update(
         productId,
         (existingCartItem) => CartItem(
@@ -41,7 +48,6 @@ class Cart with ChangeNotifier {
         ),
       );
     } else {
-      //if item is not exist, use putIfAbsent
       _items.putIfAbsent(
         productId,
         () => CartItem(
@@ -53,6 +59,17 @@ class Cart with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
+  }
+
+  //remove item logic
+  void removeItem(String productId) {
+    _items.remove(productId);
+    notifyListeners();
+  }
+
+  void clearCart() {
+    _items = {};
     notifyListeners();
   }
 }
