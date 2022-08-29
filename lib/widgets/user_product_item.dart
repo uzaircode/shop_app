@@ -9,10 +9,13 @@ class UserProductItem extends StatelessWidget {
   final String title;
   final String imageUrl;
 
-  UserProductItem(this.id, this.title, this.imageUrl);
+  // ignore: use_key_in_widget_constructors
+  const UserProductItem(this.id, this.title, this.imageUrl);
 
   @override
   Widget build(BuildContext context) {
+    final scaffold = ScaffoldMessenger.of(context);
+
     return ListTile(
       title: Text(title),
       leading: CircleAvatar(
@@ -30,8 +33,17 @@ class UserProductItem extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
           IconButton(
-            onPressed: () {
-              Provider.of<Products>(context, listen: false).deleteProduct(id);
+            onPressed: () async {
+              try {
+                await Provider.of<Products>(context, listen: false)
+                    .deleteProduct(id);
+              } catch (error) {
+                scaffold.showSnackBar(
+                  const SnackBar(
+                    content: Text('Deletion failed!'),
+                  ),
+                );
+              }
             },
             icon: const Icon(Icons.delete),
             color: Theme.of(context).errorColor,

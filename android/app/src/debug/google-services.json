@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "825802623560",
+    "firebase_url": "https://shop-app-be32a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "shop-app-be32a",
+    "storage_bucket": "shop-app-be32a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825802623560:android:91d1253a5c37b9eedd667d",
+        "android_client_info": {
+          "package_name": "com.example.shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825802623560-cm4u92dkal8mfkeb8dpvq2agoblam7il.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCflsaMUJ8xXFrnj__m6QSOhyDw4JU98uw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825802623560-cm4u92dkal8mfkeb8dpvq2agoblam7il.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
